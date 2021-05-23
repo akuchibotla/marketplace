@@ -37,12 +37,13 @@ An [order book](https://en.wikipedia.org/wiki/Order_book) maintains all active b
 
 ## Future improvements
 - More tests
+- Logging, especially error logging
 - Front end is quite disorganized, especially with styles and classes
 - Better config, the Mongo DB Atlas credential is visible in the code right now (but it's just a sandbox server)
 - There are some abstraction breaks on the server side too
 - Front end needs a real server, not the hacky hook based display
 - Better validation needed throughout app
-- Have to figure out how to get the front-end onto Heroku, the [back-end works just fine](http://ak-marketplace-server.herokuapp.com/orderbook/TSLA)
+- Have to figure out how to get the front-end onto Heroku, the [back-end API works just fine](http://ak-marketplace-server.herokuapp.com/order-book/TSLA)
 - Can iterate on data model to support other types of orders (like market orders)
 - Real order books keep track of all transaction history, should be an easy add in the future
 - File structure should be cleaner, lacks direction
