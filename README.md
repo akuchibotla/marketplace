@@ -7,7 +7,7 @@ An order book maintains all active buy/sell orders for a security in a ranked or
 ![orderbook-gif](assets/orderbook_gif.gif)
 
 
-## Features:
+## Features
 - Users can place buy or sell orders via the order page
 - Orders are matched via a FIFO algorithm (loosely based on reading I did [here](https://www.amazon.com/Algorithmic-Trading-Practitioners-Jeffrey-Bacidore/dp/0578715236/ref=sr_1_4?dchild=1&keywords=algorithmic+trading&qid=1621740058&s=books&sr=1-4) and [here](https://en.wikipedia.org/wiki/Order_matching_system))
 - Users can watch the order book for any security, which updates live as new orders are placed and cleared
@@ -15,13 +15,13 @@ An order book maintains all active buy/sell orders for a security in a ranked or
 - Order book data is persisted
 - There is a front-end for users to interact via a UI, but also an API for folks who want to programatically hook in
 
-## Technologies used:
+## Technologies used
 - MongoDB for storing transaction data (this is connected to a remote MongoDB Atlas instance, so no need for any local setup)
 - Flask
 - React
 - websockets/REST APIs
 
-## Highlights:
+## Highlights
 - First time using a lot of these technologies!
 - Every order is placed into a stack (ascending stack for asks and descending stack for bids). These lists are always maintained in order, therefore we can use binary search/insert operations, which help performance a lot. MongoDB's document style data maintainence ensures we won't run into page fragmentation or expensive sorts like we would in SQL DBs.
 - Developers can easily plug in different DBs (SQL or not) as long as they implement the interface
@@ -29,7 +29,7 @@ An order book maintains all active buy/sell orders for a security in a ranked or
 - There is some light client side validation on the orders page
 - There are some rough unit tests for the matching algorithm and order insert operations
 
-## Areas for growth:
+## Future improvements
 - More tests
 - Front end is quite disorganized, especially with styles and classes
 - Better config, the Mongo DB Atlas credential is visible in the code right now (but it's just a sandbox server)
@@ -41,7 +41,7 @@ An order book maintains all active buy/sell orders for a security in a ranked or
 - Real order books keep track of all transaction history, should be an easy add in the future
 - File structure should be cleaner, lacks direction
 
-## Run it yourself:
+## Run it yourself
 This should be as simple as
 ```
 # pull down the repo
