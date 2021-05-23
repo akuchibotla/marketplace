@@ -6,11 +6,12 @@ from datetime import datetime
 from .utils.utils import get_mid_price
 from .utils.constants import BID_KEY, ASK_KEY
 
-def match_orders(security, order_book, __socket__=None):
+def match_orders(security, order_book):
     all_bids, all_asks = \
         order_book.get_bid_orders(), order_book.get_ask_orders()
 
     update_required = False
+    transactions = list()
     while all_bids and all_asks and all_bids[0].price >= all_asks[0].price:
         update_required = True
         curr_bid = all_bids.pop(0)
@@ -32,15 +33,17 @@ def match_orders(security, order_book, __socket__=None):
         print('({}): {} sold {} shares of {} at ${}/share to {}'.format(\
             str(datetime.utcnow()), curr_ask.username, smaller.volume, security, midpoint_price, curr_bid.username))
 
-        if __socket__:
-            __socket__.emit('order_match_event', {
-                'price': midpoint_price,
-                'volume': smaller.volume,
-                'security': security,
-                'payee': curr_bid.username,
-                'payer': curr_ask.username,
-                'timestamp': str(datetime.utcnow())
-            }, namespace='/order-book')
+        transactions.append({
+            'price': midpoint_price,
+            'volume': smaller.volume,
+            'security': security,
+            'payee': curr_bid.username,
+            'payer': curr_ask.username,
+            'timestamp': str(datetime.utcnow())
+        })
 
     if update_required:
-        return ({'new_bids': all_bids, 'new_asks': all_asks})
+        return ({
+            'new_bids': all_bids,
+            'new_asks': all_asks,
+            'transactions': transactions})
