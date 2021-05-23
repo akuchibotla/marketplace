@@ -2,8 +2,13 @@
 
 An [order book](https://en.wikipedia.org/wiki/Order_book) maintains all active buy/sell orders for a security in a ranked order. Bids are ranked from highest bid to lowest bid, asks are ranked from lowest ask to highest ask. They are also ranked secondarily by the time the order was placed. An order book matches any buy/sell orders if there is an overlap between the bid and ask prices. Here's my quick and dirty attempt at it.
 
+#### This is the page you are greeted to at http://localhost:3000/
 ![homepage](assets/homepage_gif.gif)
+
+#### You can place an order for any ticker, not just the ones shown above. All tickers with order books will show up on the home page.
 ![orderpage](assets/orderpage_gif.gif)
+
+#### This is the order book, which updates live when new orders arrive. Bid/asks are ranked by price and order time. When an order is cleared, you receive a transaction log entry below the order book
 ![orderbook-gif](assets/orderbook_gif.gif)
 
 
