@@ -1,6 +1,6 @@
 # Marketplace (Order Book)
 
-An order book maintains all active orders for a security, and matches any buy/sell (or bid/ask) orders if there is an overlap. Here's my quick and dirty attempt at it.
+An order book maintains all active buy/sell orders for a security in a ranked order. Bids are ranked from highest bid to lowest bid, asks are ranked from lowest ask to highest ask. They are also ranked secondarily on the time the order was placed. An order book matches any buy/sell orders if there is an overlap between the bid and ask prices. Here's my quick and dirty attempt at it.
 
 ![homepage](assets/homepage_gif.gif)
 ![orderpage](assets/orderpage_gif.gif)
@@ -22,7 +22,7 @@ An order book maintains all active orders for a security, and matches any buy/se
 - websockets/REST APIs
 
 ## Highlights:
-- First time using a lot of these technologies, definitely not the cleanest code but I had a lot of fun doing it
+- First time using a lot of these technologies!
 - Every order is placed into a stack (ascending stack for asks and descending stack for bids). These lists are always maintained in order, therefore we can use binary search/insert operations, which help performance a lot. MongoDB's document style data maintainence ensures we won't run into page fragmentation or expensive sorts like we would in SQL DBs.
 - Developers can easily plug in different DBs (SQL or not) as long as they implement the interface
 - Developers can plug & play different order matching algorithms
