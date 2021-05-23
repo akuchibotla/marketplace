@@ -1,6 +1,6 @@
 # Marketplace (Order Book)
 
-An order book maintains all active buy/sell orders for a security in a ranked order. Bids are ranked from highest bid to lowest bid, asks are ranked from lowest ask to highest ask. They are also ranked secondarily on the time the order was placed. An order book matches any buy/sell orders if there is an overlap between the bid and ask prices. Here's my quick and dirty attempt at it.
+An [order book](https://en.wikipedia.org/wiki/Order_book) maintains all active buy/sell orders for a security in a ranked order. Bids are ranked from highest bid to lowest bid, asks are ranked from lowest ask to highest ask. They are also ranked secondarily by the time the order was placed. An order book matches any buy/sell orders if there is an overlap between the bid and ask prices. Here's my quick and dirty attempt at it.
 
 ![homepage](assets/homepage_gif.gif)
 ![orderpage](assets/orderpage_gif.gif)
