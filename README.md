@@ -29,7 +29,7 @@ An [order book](https://en.wikipedia.org/wiki/Order_book) maintains all active b
 
 ## Highlights
 - First time using a lot of these technologies!
-- Every order is placed into a stack (ascending stack for asks and descending stack for bids). These lists are always maintained in order, therefore we can use binary search/insert operations, which help performance a lot. MongoDB's document style data maintainence ensures we won't run into page fragmentation or expensive sorts like we would in SQL DBs.
+- Every order is placed into a priority list/queue (ascending list for asks and descending list for bids). These lists are always maintained in order, therefore we can use binary search/insert operations, which help performance for inserts. We always peek the top of each list to determine if there's a bid/ask match, and keep popping until there are no more matches. MongoDB's document style data maintainence ensures we won't run into page fragmentation or expensive sorts like we would in SQL DBs.
 - Developers can easily plug in different DBs (SQL or not) as long as they implement the interface
 - Developers can plug & play different order matching algorithms
 - There is some light client side validation on the orders page
