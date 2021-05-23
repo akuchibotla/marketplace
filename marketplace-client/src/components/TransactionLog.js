@@ -27,9 +27,7 @@ const containerStyle = {
 }
 
 const timestampStyle = {
-  timestamp: {
-    color: 'green',
-  }
+    color: '#00df9a',
 }
 
 export default ({data}) => {
@@ -40,7 +38,7 @@ export default ({data}) => {
           {data.map(({price, volume, security, payee, payer, timestamp}) => (
             <TableRow key={timestamp}>
               <StyledTableCell component="th" scope="row">
-                <span style={{color: '#00FF00'}}>({timestamp}):</span> {payee} received {volume} shares of {security} from {payer} at ${price}/share
+                <span style={timestampStyle}>({timestamp}):</span> {payee} received {volume} shares of {security} from {payer} at ${price}/share
               </StyledTableCell>
             </TableRow>
           ))}

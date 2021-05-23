@@ -44,10 +44,10 @@ class OrderBookService:
 
         # match orders
         order_book = self.get_order_book(security)
-        matched_orders = match_orders(security, order_book, __socket__)
+        matched_orders = match_orders(security, order_book)
         if matched_orders:
             new_bids, new_asks, new_transactions =\
-                matched_orders['new_bids'], matched_orders['new_asks'], matched_prders['transactions']
+                matched_orders['new_bids'], matched_orders['new_asks'], matched_orders['transactions']
             self.__db_client__.__update_record__(security, BID_KEY, [bid.to_tuple() for bid in new_bids])
             self.__db_client__.__update_record__(security, ASK_KEY, [ask.to_tuple() for ask in new_asks])
             __socket__.emit('order_match_event', new_transactions, namespace='/order-book')

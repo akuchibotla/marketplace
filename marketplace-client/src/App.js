@@ -47,9 +47,9 @@ function App() {
         const data = JSON.parse(json_data);
         setOrderBookData(data);
       });
-      socket.on('order_match_event', (transaction) => {
+      socket.on('order_match_event', (transactions) => {
         setTransactions(
-          oldTransactions => [transaction, ...oldTransactions]
+          oldTransactions => [...transactions, ...oldTransactions]
         );
       })
       return () => {
