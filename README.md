@@ -36,6 +36,7 @@ An order book maintains all active orders for a security, and matches buy/sell (
 - Better validation needed throughout app
 - Have to figure out how to get the front-end onto Heroku, the [back-end works just fine](http://ak-marketplace-server.herokuapp.com/)
 - Can iterate on data model to support other types of orders (like market orders)
+- Real order books keep track of all transaction history, should be an easy add in the future
 - File structure should be cleaner, lacks direction
 
 ## Run it yourself:
