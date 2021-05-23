@@ -37,6 +37,7 @@ An [order book](https://en.wikipedia.org/wiki/Order_book) maintains all active b
 
 ## Future improvements
 - More tests
+- Logging, especially error logging
 - Front end is quite disorganized, especially with styles and classes
 - Better config, the Mongo DB Atlas credential is visible in the code right now (but it's just a sandbox server)
 - There are some abstraction breaks on the server side too
