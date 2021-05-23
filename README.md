@@ -2,6 +2,9 @@
 
 An order book maintains all active orders for a security, and matches buy/sell (or bid/ask) orders if there is a suitable match. Here's my quick and dirty attempt at it.
 
+![homepage](assets/homepage_gif.gif)
+![orderpage](assets/orderpage_gif.gif)
+![orderbook-gif](assets/orderbook_gif.gif)
 
 
 ## Features:
