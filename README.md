@@ -30,7 +30,7 @@ An order book maintains all active orders for a security, and matches buy/sell (
 ## Areas for growth:
 - More tests
 - Front end is quite disorganized, especially with styles and classes
-- Better config, the Mongo DB Atlas URL is bare in the code right now
+- Better config, the Mongo DB Atlas credential is visible in the code right now (but it's just a sandbox server)
 - There are some abstraction breaks on the server side too
 - Front end needs a real server, not the hacky hook based display
 - Better validation needed throughout app
