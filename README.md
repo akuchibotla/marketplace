@@ -162,12 +162,21 @@ message: {
 ```
 wss: <url>/order-book
 event: order_match_event
-message: {
-  price: 50.45,
-  volume: 50,
-  security: "TSLA",
-  payee: "doger",
-  payer: "elon",
-  timestamp: "2021-05-23 04:18:25.802930"
-}
+message: [
+  {
+    price: 50.45,
+    volume: 50,
+    security: "TSLA",
+    payee: "doger",
+    payer: "elon",
+    timestamp: "2021-05-23 04:18:25.802930"
+  },{
+    price: 50.44,
+    volume: 500,
+    security: "TSLA",
+    payee: "larry",
+    payer: "elon",
+    timestamp: "2021-05-23 04:18:25.802930"
+  }
+]
 ```
