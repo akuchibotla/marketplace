@@ -5,7 +5,6 @@ import TextLoop from "react-text-loop";
 
 export default () => {
   const [availableTickers, setAvailableTickers] = useState([]);
-  console.log('availableTickers', availableTickers);
 
   useEffect(() => {
     fetch('/securities').then(res => res.json()).then(setAvailableTickers);

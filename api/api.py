@@ -19,7 +19,7 @@ def get_securities():
     securities = order_book_service.get_securities()
     return jsonpickle.encode(securities, unpicklable=False)
 
-@app.route('/order-book/order/<security>', methods=['POST'])
+@app.route('/order/<security>', methods=['POST'])
 def post_order(security):
     content = request.json
 

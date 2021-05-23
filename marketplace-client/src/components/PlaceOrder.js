@@ -141,7 +141,7 @@ export default () => {
                   username
                 })
               };
-              fetch(`/order-book/order/${securityTicker}`, requestOptions).then(
+              fetch(`/order/${securityTicker}`, requestOptions).then(
                 response => {
                   if (response.ok) {
                     alert(`Successfully placed order! You can see it at /order-book/${securityTicker}`);
