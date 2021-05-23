@@ -1,6 +1,6 @@
 # Marketplace (Order Book)
 
-An [order book](https://en.wikipedia.org/wiki/Order_book) maintains all active buy/sell orders for a security in a ranked order. Bids are ranked from highest bid to lowest bid, asks are ranked from lowest ask to highest ask. They are also ranked secondarily by the time the order was placed. An order book matches any buy/sell orders if there is an overlap between the bid and ask prices. Here's my quick and dirty attempt at it.
+An [order book](https://en.wikipedia.org/wiki/Order_book) maintains all active buy/sell orders for a security. Bids are ranked from highest bid to lowest bid, asks are ranked from lowest ask to highest ask. They are also ranked secondarily by the time the order was placed. An order book matches any buy/sell orders if there is an overlap between the bid and ask prices. Orders can be either completely cleared or partially cleared depending on the order volume. When an order is cleared, an order book should emit the clearing event to all interested parties. Here's my quick and dirty attempt at it.
 
 #### This is the page you are greeted to at http://localhost:3000/
 ![homepage](assets/homepage_gif.gif)
@@ -16,6 +16,7 @@ An [order book](https://en.wikipedia.org/wiki/Order_book) maintains all active b
 - Users can place buy or sell orders via the order page
 - Orders are matched via a FIFO algorithm (loosely based on reading I did [here](https://www.amazon.com/Algorithmic-Trading-Practitioners-Jeffrey-Bacidore/dp/0578715236/ref=sr_1_4?dchild=1&keywords=algorithmic+trading&qid=1621740058&s=books&sr=1-4) and [here](https://en.wikipedia.org/wiki/Order_matching_system))
 - Users can watch the order book for any security, which updates live as new orders are placed and cleared
+- Orders can either be completely cleared or partially cleared depending on the available interest volume
 - Additionally, there is a running log under the order book that describes all the transactions that have occured since the user has arrived at the page
 - Order book data is persisted
 - There is a front-end for users to interact via a UI, but also an API for folks who want to programatically hook in
@@ -117,7 +118,7 @@ GET /securities
 
 ### Places an order for a security
 ```
-POST /order-book/order/<security>
+POST /order/<security>
 ```
 with the following required payload
 ```
@@ -134,10 +135,38 @@ with the following required payload
 ```
 wss: <url>/order-book
 event: order_book_update
+message: {
+  "bids": [
+    {
+      price: 404.33
+      timestamp: "2021-05-23 07:25:29.264548"
+      username: "zain"
+      volume: 10
+    },
+    ...
+  ]
+  "asks": [
+    {
+      price: 404.35
+      timestamp: "2021-05-23 04:18:25.802930"
+      username: "harry"
+      volume: 650
+    },
+    ...
+  ],
+}
 ```
 
 ### Emits order match events
 ```
 wss: <url>/order-book
 event: order_match_event
+message: {
+  price: 50.45,
+  volume: 50,
+  security: "TSLA",
+  payee: "doger",
+  payer: "elon",
+  timestamp: "2021-05-23 04:18:25.802930"
+}
 ```
