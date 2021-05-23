@@ -1,0 +1,5 @@
+BID_KEY = 'bid'
+ASK_KEY = 'ask'
+
+SELL_ORDER = 'SELL'
+BUY_ORDER = 'BUY'
