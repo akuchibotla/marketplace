@@ -45,6 +45,7 @@ An [order book](https://en.wikipedia.org/wiki/Order_book) maintains all active b
 - Better validation needed throughout app
 - Have to figure out how to get the front-end onto Heroku, the [back-end API works just fine](http://ak-marketplace-server.herokuapp.com/order-book/TSLA)
 - Can iterate on data model to support other types of orders (like market orders)
+- In a real distributed highly trafficked environment, we'd need to implement some sort of row-locking and take general concurrency considerations into account (perhaps SQL with ordered indices is a better option since it's ACID compliant?)
 - Real order books keep track of all transaction history, should be an easy add in the future
 - File structure should be cleaner, lacks direction
 
